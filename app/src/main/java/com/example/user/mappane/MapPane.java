@@ -71,7 +71,7 @@ public class MapPane extends FragmentActivity implements OnMapReadyCallback, Goo
                 .addConnectionCallbacks(this)
                 .addOnConnectionFailedListener(this)
                 .build();
-      DataBaseHelper myDbHelper = new DataBaseHelper(MapPane.this);
+      DataBaseHelper myDbHelper = new DataBaseHelper(MapPane.this);//afficher les données d'une table apartir "base"
 
 
         try {
@@ -123,6 +123,7 @@ public class MapPane extends FragmentActivity implements OnMapReadyCallback, Goo
 
 
     @Override
+    //afficher longitude et largitude dans un toast
     public void onLocationChanged(Location location) {
 
         lon = location.getLongitude();
@@ -138,7 +139,7 @@ public class MapPane extends FragmentActivity implements OnMapReadyCallback, Goo
         directionPoint.add(gare);
         directionPoint.add(Mahdia);
 
-        Marker marker =mMap.addMarker(new MarkerOptions()
+        Marker marker =mMap.addMarker(new MarkerOptions()//ajout d'un marqueur animé(non fonctionel)
                 .icon(BitmapDescriptorFactory.fromResource(R.drawable.tr))
                 .position(gare)
                 .flat(true)
@@ -265,6 +266,7 @@ public class MapPane extends FragmentActivity implements OnMapReadyCallback, Goo
     }
 */
     @Override
+
     public void onConnected(Bundle bundle) {
         mLocationRequest = LocationRequest.create();
         mLocationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
@@ -307,7 +309,7 @@ public class MapPane extends FragmentActivity implements OnMapReadyCallback, Goo
     protected void onStart() {
         super.onStart();
         mGoogleApiClient.connect();
-        Toast.makeText(this, "client connect�", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "client connecté", Toast.LENGTH_SHORT).show();
     }
 
     protected void onStop() {
